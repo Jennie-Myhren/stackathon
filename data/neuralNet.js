@@ -26,13 +26,14 @@ const allTrainingData = rawTrainingData.slice(1, sampleSize).map(row => {
       dataVal = dataVal === 'M' ? 1 : 0;
     } else if (header !== 'id') {
       //Other data normalized as | (value - min) | / range
-      //identify if minMaxByField has the given header as a property
       if (minMaxByField.hasOwnProperty(header)) {
         let min = minMaxByField[header].min;
         let max = minMaxByField[header].max;
         let range = max - min;
         let distanceFromMin = Math.abs(dataVal - min);
-        let normalizedToDecimal = distanceFromMin / range;
+        let normalizedToDecimal = Number.parseFloat(
+          distanceFromMin / range
+        ).toPrecision(4);
         dataVal = normalizedToDecimal;
       }
     }
@@ -40,8 +41,6 @@ const allTrainingData = rawTrainingData.slice(1, sampleSize).map(row => {
     return dataObj;
   }, {});
 });
-
-console.log('TCL: allTrainingData', allTrainingData);
 
 //input has every field except id + diagnosis; (Note: omit slower than pick)
 const input = allTrainingData.map(row => _.omit(row, ['id', 'diagnosis']));
