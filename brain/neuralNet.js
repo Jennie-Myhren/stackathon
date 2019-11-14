@@ -2,22 +2,23 @@ const { NeuralNetwork } = require('brain.js');
 const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
-const minMaxByField = require('./findMaxMin'); //arr of objects: {field {min, max}}
+const minMaxByField = require('./minMaxByField'); //arr of objects: {field {min, max}}
+const tallyAccuracy = require('../data/tallyAccuracy');
 
 //read data file as synch function; returns raw data as array of strings
-const rawTrainingData = fs
-  .readFileSync(path.join(__dirname + '/train.csv'), 'utf8')
+const rawTrainData = fs
+  .readFileSync(path.resolve(__dirname, '../data/train.csv'), 'utf8')
   .split('\n');
 
 //extract headers
-const headers = rawTrainingData[0]
+const headers = rawTrainData[0]
   .split(',')
   .map(header => header.replace(/["']/g, ''));
 
-let sampleSize = rawTrainingData.length - 1;
+let sampleSize = rawTrainData.length - 1;
 
 //Format training data ([{input: {label: value}, {output: {label: value}}] with normalized values between 0 and 1
-const allTrainingData = rawTrainingData.slice(1, sampleSize).map(row => {
+const allTrainData = rawTrainData.slice(1, sampleSize).map(row => {
   return row.split(',').reduce((dataObj, dataVal, index) => {
     let header = headers[index];
 
@@ -45,7 +46,7 @@ const allTrainingData = rawTrainingData.slice(1, sampleSize).map(row => {
 
 //input will have all fields except id + diagnosis; only output diagnosis
 //NOTE TO SELF: _.Omit slower than _.pick
-const cleanTrainingData = allTrainingData.map(row => ({
+const cleantrainData = alltrainData.map(row => ({
   input: _.omit(row, ['id', 'diagnosis']),
   output: _.pick(row, ['diagnosis']),
 }));
@@ -59,8 +60,12 @@ const config = {
   // iterations: 156,
   learningRate: 0.5,
 };
-const net = new NeuralNetwork(config);
-// net.train(cleanTrainingData);
 
-console.log('Done training!', net.train(cleanTrainingData));
-//simple feed forward neural network; can play around with options for hiddenLayers & activiation; consider accuracy function
+//Initialize simple feed-forward neural network
+const net = new NeuralNetwork(config);
+
+//Log error + iterations post-training
+console.log('Done training!', net.train(cleantrainData));
+
+//FORMAT TEST DATA & PUT A VARIABLE ABOVE!
+const accuracy = getAccuracy(net, testData);

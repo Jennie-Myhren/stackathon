@@ -3,7 +3,7 @@ const path = require('path');
 
 //read data file as synch function; returns raw data as array of strings
 const rawMinMax = fs
-  .readFileSync(path.join(__dirname + '/minsAndMaxs.csv'), 'utf8')
+  .readFileSync(path.resolve(__dirname, '../data/minsAndMaxs.csv'), 'utf8')
   .split('\n')
   .map(row => row.replace(`\r`, ''));
 
