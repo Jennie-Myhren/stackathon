@@ -14,7 +14,7 @@ const headers = rawTrainingData[0]
   .split(',')
   .map(header => header.replace(/["']/g, ''));
 
-let sampleSize = rawTrainingData.length - 2;
+let sampleSize = rawTrainingData.length - 1;
 
 //NeuralNetwork takes [{input: {label: value}, {ouput: {label: value}}}], with normalized values btwn 0 and 1; map over data, setting labels for each datapoint
 const allTrainingData = rawTrainingData.slice(1, sampleSize).map(row => {
@@ -25,19 +25,23 @@ const allTrainingData = rawTrainingData.slice(1, sampleSize).map(row => {
       //Diagnosis data normalized as 0 (benign[B]) or 1 (malignant[M])
       dataVal = dataVal === 'M' ? 1 : 0;
     } else if (header !== 'id') {
-      //Other data normalized as (value-min) / range
-      let min = minMaxByField[index].min;
-      let max = minMaxByField[index].max;
-      let range = max - min;
-      dataVal = (dataVal - min) / range;
+      //Other data normalized as | (value - min) | / range
+      //identify if minMaxByField has the given header as a property
+      if (minMaxByField.hasOwnProperty(header)) {
+        let min = minMaxByField[header].min;
+        let max = minMaxByField[header].max;
+        let range = max - min;
+        let distanceFromMin = Math.abs(dataVal - min);
+        let normalizedToDecimal = distanceFromMin / range;
+        dataVal = normalizedToDecimal;
+      }
     }
     dataObj[header] = dataVal;
-    console.log('TCL: dataObj', dataObj);
     return dataObj;
   }, {});
 });
 
-// console.log('TCL: allTrainingData', allTrainingData);
+console.log('TCL: allTrainingData', allTrainingData);
 
 //input has every field except id + diagnosis; (Note: omit slower than pick)
 const input = allTrainingData.map(row => _.omit(row, ['id', 'diagnosis']));
