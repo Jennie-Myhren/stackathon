@@ -3,22 +3,25 @@ const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
 const minMaxByField = require('./minMaxByField'); //arr of objects: {field {min, max}}
-const tallyAccuracy = require('../data/tallyAccuracy');
+// const tallyAccuracy = require('../data/tallyAccuracy');
 
-//read data file as synch function; returns raw data as array of strings
-const rawTrainData = fs
-  .readFileSync(path.resolve(__dirname, '../data/train.csv'), 'utf8')
+//NORMALIZING AND FORMATTING DATA
+//get raw data (array of strings)
+const rawData = fs
+  .readFileSync(path.resolve(__dirname, '../data/dataset.csv'), 'utf8')
   .split('\n');
+console.log('TCL: rawData LAST ', rawData[rawData.length - 1]);
 
-//extract headers
-const headers = rawTrainData[0]
+//extract headers to use as input/output labels
+const headers = rawData[0]
   .split(',')
   .map(header => header.replace(/["']/g, ''));
 
-let sampleSize = rawTrainData.length - 1;
+let sampleSize = rawData.length; //(n = 569)
+console.log('TCL: sampleSize', sampleSize);
 
-//Format training data ([{input: {label: value}, {output: {label: value}}] with normalized values between 0 and 1
-const allTrainData = rawTrainData.slice(1, sampleSize).map(row => {
+//Normalize and format data ([{input: {label: value}, {output: {label: value}}]
+const allData = rawData.slice(1, sampleSize).map(row => {
   return row.split(',').reduce((dataObj, dataVal, index) => {
     let header = headers[index];
 
@@ -26,7 +29,7 @@ const allTrainData = rawTrainData.slice(1, sampleSize).map(row => {
       //Diagnosis data normalized as 0 (benign[B]) or 1 (malignant[M])
       dataVal = dataVal === 'M' ? 1 : 0;
     } else if (header !== 'id') {
-      //Other data normalized as |(value - min)| / range
+      //Other data normalized with |(value - min)| / range for # btwn 0 and 1
       if (minMaxByField.hasOwnProperty(header)) {
         let min = minMaxByField[header].min;
         let max = minMaxByField[header].max;
@@ -44,16 +47,26 @@ const allTrainData = rawTrainData.slice(1, sampleSize).map(row => {
   }, {});
 });
 
-//input will have all fields except id + diagnosis; only output diagnosis
-//NOTE TO SELF: _.Omit slower than _.pick
-const cleantrainData = alltrainData.map(row => ({
+//separate train and test data
+let midPoint = Math.ceil(sampleSize / 2);
+let trainData = allData.slice(0, midPoint); //confirmed matches train.csv (n = 285)
+let testData = allData.slice(midPoint); //confirmed matches test.csv (n = 284)
+
+//select all fields but id & Dx for input; output = Dx (NOTE: _.omit slower than _.pick)
+const cleanTrainData = trainData.map(row => ({
+  input: _.omit(row, ['id', 'diagnosis']),
+  output: _.pick(row, ['diagnosis']),
+}));
+
+const cleanTestData = testData.map(row => ({
   input: _.omit(row, ['id', 'diagnosis']),
   output: _.pick(row, ['diagnosis']),
 }));
 
 //NOTE TO SELF FOR LATER: Consider shuffling training data
 
-//initialize neural network
+//NEURAL NETWORK CONFIG
+//set network configuration options
 const config = {
   activiation: 'sigmoid',
   // hiddenLayers: [4],
@@ -61,11 +74,11 @@ const config = {
   learningRate: 0.5,
 };
 
-//Initialize simple feed-forward neural network
+//initialize simple feed-forward neural network
 const net = new NeuralNetwork(config);
 
-//Log error + iterations post-training
-console.log('Done training!', net.train(cleantrainData));
+//log error + iterations post-training
+//FIGURE OUT HOW TO TRAIN OFFLINE!!!!!
+console.log('Artificial brain done training!', net.train(cleanTrainData));
 
-//FORMAT TEST DATA & PUT A VARIABLE ABOVE!
 const accuracy = getAccuracy(net, testData);
