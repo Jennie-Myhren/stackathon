@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import dataInputForm from './dataInputForm';
+import DataInputForm from './DataInputForm';
 
-class dataInputPage extends Component {
+class DataInputPage extends Component {
   submit = values => {
     // print the form values to the console
     console.log(values);
   };
   render() {
-    return <dataInputForm onSubmit={this.submit} />;
+    return <DataInputForm onSubmit={this.submit} />;
   }
 }
 
-export default dataInputPage;
+export default DataInputPage;
