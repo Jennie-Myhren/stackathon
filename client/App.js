@@ -1,6 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import DataInputPage from './dataInputPage';
+import DataInputPage from './DataInputPage';
+import Routes from './Routes';
+import Navbar from './Navbar';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Navbar />
+      <Routes />
+      <Text>Can you read me??</Text>
+      <DataInputPage />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -10,12 +23,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Can you read me??</Text>
-      <DataInputPage />
-    </View>
-  );
-}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import dataInputForm from './dataInputForm';
+import dataInputForm from './DataInputForm';
 
 class dataInputPage extends Component {
   submit = values => {
