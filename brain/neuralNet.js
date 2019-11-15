@@ -3,14 +3,13 @@ const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
 const minMaxByField = require('./minMaxByField'); //arr of objects: {field {min, max}}
-// const tallyAccuracy = require('../data/tallyAccuracy');
+const tallyAccuracy = require('./tallyAccuracy');
 
 //NORMALIZING AND FORMATTING DATA
 //get raw data (array of strings)
 const rawData = fs
   .readFileSync(path.resolve(__dirname, '../data/dataset.csv'), 'utf8')
   .split('\n');
-console.log('TCL: rawData LAST ', rawData[rawData.length - 1]);
 
 //extract headers to use as input/output labels
 const headers = rawData[0]
@@ -18,7 +17,6 @@ const headers = rawData[0]
   .map(header => header.replace(/["']/g, ''));
 
 let sampleSize = rawData.length; //(n = 569)
-console.log('TCL: sampleSize', sampleSize);
 
 //Normalize and format data ([{input: {label: value}, {output: {label: value}}]
 const allData = rawData.slice(1, sampleSize).map(row => {
@@ -70,7 +68,7 @@ const cleanTestData = testData.map(row => ({
 const config = {
   activiation: 'sigmoid',
   // hiddenLayers: [4],
-  // iterations: 156,
+  iterations: 20000,
   learningRate: 0.5,
 };
 
@@ -78,7 +76,8 @@ const config = {
 const net = new NeuralNetwork(config);
 
 //log error + iterations post-training
-//FIGURE OUT HOW TO TRAIN OFFLINE!!!!!
 console.log('Artificial brain done training!', net.train(cleanTrainData));
 
-const accuracy = getAccuracy(net, testData);
+//calculate accuracy after running net.run method on the test data
+const accuracy = tallyAccuracy(net, cleanTestData);
+console.log('TCL: accuracy', accuracy);
