@@ -1,5 +1,6 @@
-// import React from 'react';
+import React from 'react';
+import ButtonView from './ButtonView';
 
-// export default function App() {
-//   return <h2>Hello from App</h2>;
-// }
+export default function App() {
+  return <ButtonView />;
+}
