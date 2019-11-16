@@ -105,6 +105,11 @@ export default function ButtonView() {
           style={{
             width: image.width,
           }}
+          href={
+            image.title === 'Run Test Data'
+              ? 'http://localhost:1234/run-test-data'
+              : 'http://localhost:1234/input-patient-data'
+          }
         >
           <span
             className={classes.imageSrc}
