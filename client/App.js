@@ -4,6 +4,16 @@ import DataInputPage from './DataInputPage';
 import Routes from './Routes';
 import Navbar from './Navbar';
 
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
 export default function App() {
   return (
     <View style={styles.container}>
