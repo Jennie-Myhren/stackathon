@@ -1,9 +1,13 @@
 import React from 'react';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import DataInputPage from './DataInputPage';
+import { Route, Switch } from 'react-router-dom';
+import TestPage from './TestPage';
 
 const Routes = () => {
-  return <Route exact path="/" component={DataInputPage} />;
+  return (
+    <Switch>
+      <Route path="/" component={TestPage} />
+    </Switch>
+  );
 };
 
 export default Routes;
