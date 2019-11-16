@@ -106499,7 +106499,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function App() {
   return _react.default.createElement(_ButtonView.default, null);
 }
-},{"react":"../node_modules/react/index.js","./ButtonView":"../client/ButtonView.js"}],"../client/DataInputForm.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ButtonView":"../client/ButtonView.js"}],"../client/Form_Means.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -106513,83 +106513,73 @@ var _reduxForm = require("redux-form");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MeansForm = function MeansForm(props) {
-  var handleSubmit = props.handleSubmit;
-  return _react.default.createElement("form", {
-    onSubmit: handleSubmit
-  }, _react.default.createElement("div", null, _react.default.createElement("label", {
+var Means = function Means() {
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Please provide the mean for each field."), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "radiusMean"
   }, "Radius Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "radiusMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "textureMean"
   }, "Texture Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "textureMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "perimeterMean"
   }, "Perimeter Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "perimeterMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "areaMean"
   }, "Area Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "areaMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "smoothnessMean"
   }, "Smoothness Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "smoothnessMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "compactnessMean"
   }, "Compactness Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "compactnessMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "concavityMean"
   }, "Concavity Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "concavityMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "concavePointsMean"
   }, "Concave Points Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "concavePointsMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "symmetryMean"
   }, "Symmetry Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "symmetryMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("div", null, _react.default.createElement("label", {
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
     htmlFor: "fractalDimensionMean"
   }, "Fractal Dimension Mean: "), _react.default.createElement(_reduxForm.Field, {
     name: "fractalDimensionMean",
     component: "input",
     type: "number"
-  })), _react.default.createElement("button", {
-    type: "submit"
-  }, "Predict Diagnosis"));
-}; //NOTE: on submit, data passed as JSON object to onSubmit fn
-//reduxForm provides props about form state + handleSubmit func
+  })), _react.default.createElement("br", null));
+};
 
-
-MeansForm = (0, _reduxForm.reduxForm)({
-  form: 'means'
-})(MeansForm);
-var _default = MeansForm;
+var _default = Means;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","redux-form":"../node_modules/redux-form/es/index.js"}],"../client/DataInputPage.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","redux-form":"../node_modules/redux-form/es/index.js"}],"../client/Form_SEs.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -106597,9 +106587,253 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _react = _interopRequireDefault(require("react"));
+
+var _reduxForm = require("redux-form");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var StandardErrors = function StandardErrors() {
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Please provide the standard error (SE) for each field."), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "radiusSE"
+  }, "Radius SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "radiusSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "textureSE"
+  }, "Texture SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "textureSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "perimeterSE"
+  }, "Perimeter SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "perimeterSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "areaSE"
+  }, "Area SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "areaSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "smoothnessSE"
+  }, "Smoothness SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "smoothnessSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "compactnessSE"
+  }, "Compactness SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "compactnessSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "concavitySE"
+  }, "Concavity SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "concavitySE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "concavePointsSE"
+  }, "Concave Points SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "concavePointsSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "symmetrySE"
+  }, "Symmetry SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "symmetrySE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "fractalDimensionSE"
+  }, "Fractal Dimension SE: "), _react.default.createElement(_reduxForm.Field, {
+    name: "fractalDimensionSE",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null));
+};
+
+var _default = StandardErrors;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","redux-form":"../node_modules/redux-form/es/index.js"}],"../client/Form_Worsts.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reduxForm = require("redux-form");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Worsts = function Worsts() {
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Please provide the \"worst\" (mean of 3 largest values) for each field."), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "radiusWorst"
+  }, "Radius Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "radiusWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "textureWorst"
+  }, "Texture Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "textureWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "perimeterWorst"
+  }, "Perimeter Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "perimeterWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "areaWorst"
+  }, "Area Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "areaWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "smoothnessWorst"
+  }, "Smoothness Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "smoothnessWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "compactnessWorst"
+  }, "Compactness Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "compactnessWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "concavityWorst"
+  }, "Concavity Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "concavityWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "concavePointsWorst"
+  }, "Concave Points Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "concavePointsWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "symmetryWorst"
+  }, "Symmetry Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "symmetryWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null), _react.default.createElement("div", null, _react.default.createElement("label", {
+    htmlFor: "fractalDimensionWorst"
+  }, "Fractal Dimension Worst: "), _react.default.createElement(_reduxForm.Field, {
+    name: "fractalDimensionWorst",
+    component: "input",
+    type: "number"
+  })), _react.default.createElement("br", null));
+};
+
+var _default = Worsts;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","redux-form":"../node_modules/redux-form/es/index.js"}],"../node_modules/@babel/runtime/helpers/interopRequireDefault.js":[function(require,module,exports) {
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+},{}],"../node_modules/@material-ui/icons/utils/createSvgIcon.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = createSvgIcon;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _SvgIcon = _interopRequireDefault(require("@material-ui/core/SvgIcon"));
+
+function createSvgIcon(path, displayName) {
+  var Component = _react.default.memo(_react.default.forwardRef(function (props, ref) {
+    return _react.default.createElement(_SvgIcon.default, (0, _extends2.default)({
+      ref: ref
+    }, props), path);
+  }));
+
+  if ("development" !== 'production') {
+    Component.displayName = "".concat(displayName, "Icon");
+  }
+
+  Component.muiName = _SvgIcon.default.muiName;
+  return Component;
+}
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","@babel/runtime/helpers/extends":"../node_modules/@babel/runtime/helpers/extends.js","react":"../node_modules/react/index.js","@material-ui/core/SvgIcon":"../node_modules/@material-ui/core/esm/SvgIcon/index.js"}],"../node_modules/@material-ui/icons/KeyboardArrowLeft.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"
+}), 'KeyboardArrowLeft');
+
+exports.default = _default;
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../node_modules/@material-ui/icons/KeyboardArrowRight.js":[function(require,module,exports) {
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _createSvgIcon = _interopRequireDefault(require("./utils/createSvgIcon"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+}), 'KeyboardArrowRight');
+
+exports.default = _default;
+},{"@babel/runtime/helpers/interopRequireDefault":"../node_modules/@babel/runtime/helpers/interopRequireDefault.js","react":"../node_modules/react/index.js","./utils/createSvgIcon":"../node_modules/@material-ui/icons/utils/createSvgIcon.js"}],"../client/ProgressBar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = ProgressMobileStepper;
+
 var _react = _interopRequireWildcard(require("react"));
 
-var _DataInputForm = _interopRequireDefault(require("./DataInputForm"));
+var _styles = require("@material-ui/core/styles");
+
+var _MobileStepper = _interopRequireDefault(require("@material-ui/core/MobileStepper"));
+
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
+
+var _KeyboardArrowLeft = _interopRequireDefault(require("@material-ui/icons/KeyboardArrowLeft"));
+
+var _KeyboardArrowRight = _interopRequireDefault(require("@material-ui/icons/KeyboardArrowRight"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -106607,10 +106841,124 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var useStyles = (0, _styles.makeStyles)({
+  root: {
+    maxWidth: 500,
+    flexGrow: 1
+  }
+});
+
+function ProgressMobileStepper() {
+  var classes = useStyles();
+  var theme = (0, _styles.useTheme)();
+
+  var _useState = (0, _react.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentStep = _useState2[0],
+      setCurrentStep = _useState2[1];
+
+  var handleNext = function handleNext() {
+    setCurrentStep(currentStep + 1);
+  };
+
+  var handlePrev = function handlePrev() {
+    setCurrentStep(currentStep - 1);
+  };
+
+  return _react.default.createElement(_MobileStepper.default, {
+    variant: "progress",
+    steps: 5,
+    position: "static",
+    activeStep: currentStep,
+    className: classes.root,
+    nextButton: _react.default.createElement(_Button.default, {
+      size: "small",
+      onClick: handleNext,
+      disabled: currentStep === 4
+    }, "Next", theme.direction === 'rtl' ? _react.default.createElement(_KeyboardArrowLeft.default, null) : _react.default.createElement(_KeyboardArrowRight.default, null)),
+    backButton: _react.default.createElement(_Button.default, {
+      size: "small",
+      onClick: handlePrev,
+      disabled: currentStep === 0
+    }, theme.direction === 'rtl' ? _react.default.createElement(_KeyboardArrowRight.default, null) : _react.default.createElement(_KeyboardArrowLeft.default, null), "Back")
+  });
+}
+},{"react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/MobileStepper":"../node_modules/@material-ui/core/esm/MobileStepper/index.js","@material-ui/core/Button":"../node_modules/@material-ui/core/esm/Button/index.js","@material-ui/icons/KeyboardArrowLeft":"../node_modules/@material-ui/icons/KeyboardArrowLeft.js","@material-ui/icons/KeyboardArrowRight":"../node_modules/@material-ui/icons/KeyboardArrowRight.js"}],"../client/DataInputForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reduxForm = require("redux-form");
+
+var _core = require("@material-ui/core");
+
+var _Form_Means = _interopRequireDefault(require("./Form_Means"));
+
+var _Form_SEs = _interopRequireDefault(require("./Form_SEs"));
+
+var _Form_Worsts = _interopRequireDefault(require("./Form_Worsts"));
+
+var _ProgressBar = _interopRequireDefault(require("./ProgressBar"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DataInputForm = function DataInputForm(props) {
+  var handleSubmit = props.handleSubmit;
+  var formPage = 1;
+  return _react.default.createElement("div", {
+    className: "form"
+  }, _react.default.createElement("form", {
+    onSubmit: handleSubmit
+  }, (formPage = 1) ? _react.default.createElement(_Form_Means.default, null) : null, (formPage = 2) ? _react.default.createElement(_Form_SEs.default, null) : null, (formPage = 3) ? _react.default.createElement(_Form_Worsts.default, null) : null, _react.default.createElement(_core.Button, {
+    variant: "contained",
+    type: "submit",
+    color: "primary"
+  }, "Predict Diagnosis"), _react.default.createElement("br", null)), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_ProgressBar.default, {
+    formPage: formPage
+  }));
+}; //NOTE: on submit, data passed as JSON object to onSubmit fn
+//reduxForm provides props about form state + handleSubmit func
+
+
+var _default = (0, _reduxForm.reduxForm)({
+  form: 'means'
+})(DataInputForm);
+
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","redux-form":"../node_modules/redux-form/es/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js","./Form_Means":"../client/Form_Means.js","./Form_SEs":"../client/Form_SEs.js","./Form_Worsts":"../client/Form_Worsts.js","./ProgressBar":"../client/ProgressBar.js"}],"../client/DataInputPage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _DataInputForm = _interopRequireDefault(require("./DataInputForm"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import trainedBrain from '../brain/neuralNet';
 var DataInputPage = function DataInputPage() {
-  var handleSubmit = function handleSubmit(values) {
+  var handleSubmit = function handleSubmit(e, _ref) {
+    var values = _ref.values;
     // print the form values to the console
-    console.log(values);
+    // trainedBrain.run(values);
+    console.log('Handled Submit');
   };
 
   return _react.default.createElement(_DataInputForm.default, {
@@ -106676,15 +107024,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var theme = (0, _styles.createMuiTheme)({
   palette: {
     primary: {
-      light: '#6ff9ff',
-      main: '#26c6da',
-      dark: '#0095a8',
-      contrastText: '#000'
-    },
-    secondary: {
       light: '#cfff95',
       main: '#9ccc65',
       dark: '#6b9b37',
+      contrastText: '#000'
+    },
+    secondary: {
+      light: '#6ff9ff',
+      main: '#26c6da',
+      dark: '#0095a8',
       contrastText: '#000'
     }
   }
@@ -106723,7 +107071,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62435" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59792" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

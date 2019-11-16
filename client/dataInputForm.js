@@ -1,62 +1,34 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
+import { Button } from '@material-ui/core';
+import Means from './Form_Means';
+import StandardErrors from './Form_SEs';
+import Worsts from './Form_Worsts';
+import ProgressBar from './ProgressBar';
 
-let MeansForm = props => {
+const DataInputForm = props => {
   const { handleSubmit } = props;
+  let formPage = 1;
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="radiusMean">Radius Mean: </label>
-        <Field name="radiusMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="textureMean">Texture Mean: </label>
-        <Field name="textureMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="perimeterMean">Perimeter Mean: </label>
-        <Field name="perimeterMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="areaMean">Area Mean: </label>
-        <Field name="areaMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="smoothnessMean">Smoothness Mean: </label>
-        <Field name="smoothnessMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="compactnessMean">Compactness Mean: </label>
-        <Field name="compactnessMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="concavityMean">Concavity Mean: </label>
-        <Field name="concavityMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="concavePointsMean">Concave Points Mean: </label>
-        <Field name="concavePointsMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="symmetryMean">Symmetry Mean: </label>
-        <Field name="symmetryMean" component="input" type="number"></Field>
-      </div>
-      <div>
-        <label htmlFor="fractalDimensionMean">Fractal Dimension Mean: </label>
-        <Field
-          name="fractalDimensionMean"
-          component="input"
-          type="number"
-        ></Field>
-      </div>
-      <button type="submit">Predict Diagnosis</button>
-    </form>
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        {(formPage = 1) ? <Means /> : null}
+        {(formPage = 2) ? <StandardErrors /> : null}
+        {(formPage = 3) ? <Worsts /> : null}
+        <Button variant="contained" type="submit" color="primary">
+          Predict Diagnosis
+        </Button>
+        <br />
+      </form>
+      <br />
+      <br />
+      <ProgressBar formPage={formPage} />
+    </div>
   );
 };
 
 //NOTE: on submit, data passed as JSON object to onSubmit fn
 
 //reduxForm provides props about form state + handleSubmit func
-MeansForm = reduxForm({ form: 'means' })(MeansForm);
-
-export default MeansForm;
+export default reduxForm({ form: 'means' })(DataInputForm);
