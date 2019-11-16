@@ -79563,7 +79563,56 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function App() {
   return _react.default.createElement(_ButtonView.default, null);
 }
-},{"react":"../node_modules/react/index.js","./ButtonView":"../client/ButtonView.js"}],"../client/Main.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./ButtonView":"../client/ButtonView.js"}],"../client/Navbar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _core = require("@material-ui/core");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Navbar = function Navbar() {
+  var useStyles = (0, _core.makeStyles)(function (theme) {
+    console.log(theme);
+    return {
+      root: {
+        flexGrow: 1
+      },
+      avatar: {
+        margin: 10
+      },
+      title: {
+        flexGrow: 1
+      }
+    };
+  });
+  var classes = useStyles();
+  return _react.default.createElement("div", {
+    className: classes.root
+  }, _react.default.createElement(_core.AppBar, {
+    position: "static"
+  }, _react.default.createElement(_core.Toolbar, {
+    className: classes.menuBar
+  }, _react.default.createElement(_core.Typography, {
+    className: classes.title,
+    variant: "h3"
+  }, "Dx Prediction"), _react.default.createElement(_core.Avatar, {
+    alt: "Margaret Hamburg",
+    src: "https://upload.wikimedia.org/wikipedia/commons/a/a8/Margaret_Hamburg_official_portrait.jpg",
+    variant: "circle",
+    className: classes.avatar
+  }), _react.default.createElement(_core.Button, null, "Logout"))));
+};
+
+var _default = Navbar;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","@material-ui/core":"../node_modules/@material-ui/core/esm/index.js"}],"../client/Main.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -79572,13 +79621,38 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _App = _interopRequireDefault(require("./App"));
 
+var _Navbar = _interopRequireDefault(require("./Navbar"));
+
+var _styles = require("@material-ui/core/styles");
+
+var _styles2 = require("@material-ui/styles");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // import { Provider } from 'react-redux';
-_reactDom.default.render( // <h2>Hello from Main</h2>,
-// <Provider store={store}>
-_react.default.createElement(_App.default, null), document.getElementById('app'));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App":"../client/App.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+// import Routes from './Routes';
+var theme = (0, _styles.createMuiTheme)({
+  palette: {
+    primary: {
+      light: '#6ff9ff',
+      main: '#26c6da',
+      dark: '#0095a8',
+      contrastText: '#000'
+    },
+    secondary: {
+      light: '#cfff95',
+      main: '#9ccc65',
+      dark: '#6b9b37',
+      contrastText: '#000'
+    }
+  }
+});
+
+_reactDom.default.render( // <Provider store={store}>
+_react.default.createElement(_styles2.ThemeProvider, {
+  theme: theme
+}, _react.default.createElement(_Navbar.default, null), _react.default.createElement(_App.default, null)), document.getElementById('app'));
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./App":"../client/App.js","./Navbar":"../client/Navbar.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js"}],"../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -79606,7 +79680,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50646" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57742" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
