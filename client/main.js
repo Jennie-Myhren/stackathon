@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-import App from './App';
+import { Provider } from 'react-redux';
+import store from './store';
 import Navbar from './Navbar';
-// import Routes from './Routes';
+import Routes from './Routes';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -25,10 +25,11 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-  // <Provider store={store}>
-  <ThemeProvider theme={theme}>
-    <Navbar />
-    <App />
-  </ThemeProvider>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <Navbar />
+      <Routes />
+    </ThemeProvider>
+  </Provider>,
   document.getElementById('app')
 );

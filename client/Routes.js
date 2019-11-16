@@ -1,12 +1,15 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import TestPage from './TestPage';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import App from './App';
+import DataInputPage from './DataInputPage';
 
 const Routes = () => {
   return (
-    <Switch>
-      <Route path="/" component={TestPage} />
-    </Switch>
+    <Router>
+      <Route exact path="/" component={App} />
+      {/* <Route exact path="/run-test-data" /> */}
+      <Route exact path="/input-patient-data" component={DataInputPage} />
+    </Router>
   );
 };
 

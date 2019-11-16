@@ -10,22 +10,21 @@ import {
   Typography,
 } from '@material-ui/core';
 
-const Navbar = () => {
-  const useStyles = makeStyles(theme => {
-    console.log(theme);
-    return {
-      root: {
-        flexGrow: 1,
-      },
-      avatar: {
-        margin: 10,
-      },
-      title: {
-        flexGrow: 1,
-      },
-    };
-  });
+const useStyles = makeStyles(theme => {
+  return {
+    root: {
+      flexGrow: 1,
+    },
+    avatar: {
+      margin: 10,
+    },
+    title: {
+      flexGrow: 1,
+    },
+  };
+});
 
+const Navbar = () => {
   const classes = useStyles();
 
   return (
