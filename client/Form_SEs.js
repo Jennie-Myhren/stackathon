@@ -5,7 +5,6 @@ import { Button, Typography } from '@material-ui/core';
 
 const StandardErrors = props => {
   const { handleSubmit, prevPage } = props;
-  console.log(props);
 
   return (
     <div>
@@ -15,70 +14,70 @@ const StandardErrors = props => {
       <Typography>
         <form onSubmit={handleSubmit}>
           <Field
-            name="radiusSE"
+            name="radius_se"
             component={renderField}
             type="number"
             label="Radius SE: "
           />
           <br />
           <Field
-            name="textureSE"
+            name="texture_se"
             component={renderField}
             type="number"
             label="Texture SE: "
           />
           <br />
           <Field
-            name="perimeterSE"
+            name="perimeter_se"
             component={renderField}
             type="number"
             label="Perimeter SE: "
           />
           <br />
           <Field
-            name="areaSE"
+            name="area_se"
             component={renderField}
             type="number"
             label="Area SE: "
           />
           <br />
           <Field
-            name="smoothnessSE"
+            name="smoothness_se"
             component={renderField}
             type="number"
             label="Smoothness SE"
           />
           <br />
           <Field
-            name="compactnessSE"
+            name="compactness_se"
             component={renderField}
             type="number"
             label="Compactness SE"
           />
           <br />
           <Field
-            name="concavitySE"
+            name="concavity_se"
             component={renderField}
             type="number"
             label="Concavity SE"
           />
           <br />
           <Field
-            name="concavePointsSE"
+            name="concave_points_se"
             component={renderField}
             type="number"
             label="Concave Points SE"
           />
           <br />
           <Field
-            name="symmetrySE"
+            name="symmetry_se"
             component={renderField}
             type="number"
             label="Symmetry SE"
           />
           <br />
           <Field
-            name="fractalDimensionSE"
+            name="fractal_dimension_se"
             component={renderField}
             type="number"
             label="Fractal Dimension SE"

@@ -15,70 +15,70 @@ const Worsts = props => {
       <Typography>
         <form onSubmit={handleSubmit}>
           <Field
-            name="radiusWorst"
+            name="radius_worst"
             component={renderField}
             type="number"
             label="Radius Worst: "
           />
           <br />
           <Field
-            name="textureWorst"
+            name="texture_worst"
             component={renderField}
             type="number"
             label="Texture Worst: "
           />
           <br />
           <Field
-            name="perimeterWorst"
+            name="perimeter_worst"
             component={renderField}
             type="number"
             label="Perimeter Worst: "
           />
           <br />
           <Field
-            name="areaWorst"
+            name="area_worst"
             component={renderField}
             type="number"
             label="Area Worst: "
           />
           <br />
           <Field
-            name="smoothnessWorst"
+            name="smoothness_worst"
             component={renderField}
             type="number"
             label="Smoothness Worst: "
           />
           <br />
           <Field
-            name="compactnessWorst"
+            name="compactness_worst"
             component={renderField}
             type="number"
             label="Compactness Worst: "
           />
           <br />
           <Field
-            name="concavityWorst"
+            name="concavity_worst"
             component={renderField}
             type="number"
-            label="Concavity WOrst: "
+            label="Concavity Worst: "
           />
           <br />
           <Field
-            name="concavePointsWorst"
+            name="concave_points_worst"
             component={renderField}
             type="number"
             label="Concave Points Worst: "
           />
           <br />
           <Field
-            name="symmetryWorst"
+            name="symmetry_worst"
             component={renderField}
             type="number"
             label="Symmetry Worst: "
           />
           <br />
           <Field
-            name="fractalDimensionWorst"
+            name="fractal_dimension_worst"
             component={renderField}
             type="number"
             label="Fractal Dimension Worst: "

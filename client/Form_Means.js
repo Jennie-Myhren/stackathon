@@ -14,70 +14,70 @@ const Means = props => {
       <Typography>
         <form onSubmit={onSubmit}>
           <Field
-            name="radiusMean"
+            name="radius_mean"
             component={renderField}
             type="number"
             label="Radius Mean: "
           />
           <br />
           <Field
-            name="textureMean"
+            name="texture_mean"
             component={renderField}
             type="number"
             label="Texture Mean: "
           />
           <br />
           <Field
-            name="perimeterMean"
+            name="perimeter_mean"
             component={renderField}
             type="number"
             label="Perimeter Mean: "
           />
           <br />
           <Field
-            name="areaMean"
+            name="area_mean"
             component={renderField}
             type="number"
             label="Area Mean: "
           />
           <br />
           <Field
-            name="smoothnessMean"
+            name="smoothness_mean"
             component={renderField}
             type="number"
             label="Smoothness Mean: "
           />
           <br />
           <Field
-            name="compactnessMean"
+            name="compactness_mean"
             component={renderField}
             type="number"
             label="Compactness Mean: "
           />
           <br />
           <Field
-            name="concavityMean"
+            name="concavity_mean"
             component={renderField}
             type="number"
             label="Concavity Mean: "
           />
           <br />
           <Field
-            name="concavePointsMean"
+            name="concave_points_mean"
             component={renderField}
             type="number"
             label="Concave Points Mean: "
           />
           <br />
           <Field
-            name="symmetryMean"
+            name="symmetry_mean"
             component={renderField}
             type="number"
             label="Symmetry Mean: "
           />
           <br />
           <Field
-            name="fractalDimensionMean"
+            name="fractal_dimension_mean"
             component={renderField}
             type="number"
             label="Fractal Dimension Mean: "
