@@ -31,7 +31,11 @@ const Navbar = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar className={classes.menuBar}>
-          <Typography className={classes.title} variant="h3">
+          <Typography
+            color="textPrimary"
+            className={classes.title}
+            variant="h3"
+          >
             Dx Prediction
           </Typography>
           <Avatar
