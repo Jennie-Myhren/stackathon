@@ -2,9 +2,6 @@ import React from 'react';
 import {
   AppBar,
   Avatar,
-  Button,
-  IconButton,
-  MenuIcon,
   makeStyles,
   Toolbar,
   Typography,
@@ -17,6 +14,7 @@ const useStyles = makeStyles(theme => {
     },
     avatar: {
       margin: 10,
+      border: '3px solid black',
     },
     title: {
       flexGrow: 1,
@@ -38,13 +36,14 @@ const Navbar = () => {
           >
             Dx Prediction
           </Typography>
+          <br />
           <Avatar
-            alt="Margaret Hamburg"
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Margaret_Hamburg_official_portrait.jpg"
+            alt="Avatar Image"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/User_md_font_awesome.svg/800px-User_md_font_awesome.svg.png"
             variant="circle"
             className={classes.avatar}
           />
-          <Button>Logout</Button>
+          <Typography>Welcome, Dr. Smythe!</Typography>
         </Toolbar>
       </AppBar>
     </div>
