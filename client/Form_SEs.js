@@ -1,62 +1,102 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import renderField from './renderField';
+import Button from '@material-ui/core/Button';
 
-const StandardErrors = () => {
+const StandardErrors = props => {
+  const { handleSubmit, prevPage } = props;
+  console.log(props);
+
   return (
     <div>
       <h3>Please provide the standard error (SE) for each field.</h3>
-      <div>
-        <label htmlFor="radiusSE">Radius SE: </label>
-        <Field name="radiusSE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="textureSE">Texture SE: </label>
-        <Field name="textureSE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="perimeterSE">Perimeter SE: </label>
-        <Field name="perimeterSE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="areaSE">Area SE: </label>
-        <Field name="areaSE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="smoothnessSE">Smoothness SE: </label>
-        <Field name="smoothnessSE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="compactnessSE">Compactness SE: </label>
-        <Field name="compactnessSE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="concavitySE">Concavity SE: </label>
-        <Field name="concavitySE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="concavePointsSE">Concave Points SE: </label>
-        <Field name="concavePointsSE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="symmetrySE">Symmetry SE: </label>
-        <Field name="symmetrySE" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="fractalDimensionSE">Fractal Dimension SE: </label>
-        <Field name="fractalDimensionSE" component="input" type="number" />
-      </div>
-      <br />
+      <form onSubmit={handleSubmit}>
+        <Field
+          name="radiusSE"
+          component={renderField}
+          type="number"
+          label="Radius SE: "
+        />
+        <br />
+        <Field
+          name="textureSE"
+          component={renderField}
+          type="number"
+          label="Texture SE: "
+        />
+        <br />
+        <Field
+          name="perimeterSE"
+          component={renderField}
+          type="number"
+          label="Perimeter SE: "
+        />
+        <br />
+        <Field
+          name="areaSE"
+          component={renderField}
+          type="number"
+          label="Area SE: "
+        />
+        <br />
+        <Field
+          name="smoothnessSE"
+          component={renderField}
+          type="number"
+          label="Smoothness SE"
+        />
+        <br />
+        <Field
+          name="compactnessSE"
+          component={renderField}
+          type="number"
+          label="Compactness SE"
+        />
+        <br />
+        <Field
+          name="concavitySE"
+          component={renderField}
+          type="number"
+          label="Concavity SE"
+        />
+        <br />
+        <Field
+          name="concavePointsSE"
+          component={renderField}
+          type="number"
+          label="Concave Points SE"
+        />
+        <br />
+        <Field
+          name="symmetrySE"
+          component={renderField}
+          type="number"
+          label="Symmetry SE"
+        />
+        <br />
+        <Field
+          name="fractalDimensionSE"
+          component={renderField}
+          type="number"
+          label="Fractal Dimension SE"
+        />
+        <br />
+        <div>
+          <Button type="button" color="secondary" onClick={prevPage}>
+            Previous
+          </Button>
+          <Button type="submit" color="primary">
+            Next
+          </Button>
+        </div>
+      </form>
     </div>
   );
 };
 
-export default StandardErrors;
+// export default StandardErrors;
+export default reduxForm({
+  form: 'dataInput',
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
+})(StandardErrors);

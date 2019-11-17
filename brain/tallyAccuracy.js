@@ -1,22 +1,19 @@
 //measure accuracy using a hits counter
 function tallyAccuracy(net, testData) {
-  //hits counter counts correct guesses by computer
+  //initialize counter for correct guesses
   let hits = 0;
-  let runLog = [];
-
   testData.forEach(datapoint => {
-    //first examine what the artificial brain predicted; NOTE: net.run will provide prediction even if input missing fields
+    //get prediction for each test run (NOTE: net.run gives prediction even if input missing fields)
     let output = net.run(datapoint.input);
-    runLog.push('Articial brain finished running test data');
     let computerGuess = Math.round(output.diagnosis);
-    //then compare the prediction with the expected output
+    //compare prediction w/ expectation
     let providedDx = Math.round(datapoint.output.diagnosis);
     if (computerGuess === providedDx) {
       hits += 1;
     }
   });
   //make sure all the samples ran
-  console.log(`Articial Brain ran ${runLog.length} tests.`);
+  console.log(`Articial Brain ran ${testData.length} tests.`);
   let accuracy = Number.parseFloat(hits / testData.length).toPrecision(4);
   return `${accuracy * 100} %`;
 }

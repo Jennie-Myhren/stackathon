@@ -1,62 +1,95 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import renderField from './renderField';
+import Button from '@material-ui/core/Button';
 
-const Means = () => {
+const Means = props => {
+  const { handleSubmit } = props;
   return (
     <div>
       <h3>Please provide the mean for each field.</h3>
-      <div>
-        <label htmlFor="radiusMean">Radius Mean: </label>
-        <Field name="radiusMean" component="input" type="number" />
-      </div>
+      <form onSubmit={handleSubmit} />
+      <Field
+        name="radiusMean"
+        component={renderField}
+        type="number"
+        label="Radius Mean"
+      />
+      <br />
+      <Field
+        name="textureMean"
+        component={renderField}
+        type="number"
+        label="Texture Mean"
+      />
+      <br />
+      <Field
+        name="perimeterMean"
+        component={renderField}
+        type="number"
+        label="Perimeter Mean"
+      />
+      <br />
+      <Field
+        name="areaMean"
+        component={renderField}
+        type="number"
+        label="Area Mean"
+      />
+      <br />
+      <Field
+        name="smoothnessMean"
+        component={renderField}
+        type="number"
+        label="Smoothness Mean"
+      />
+      <br />
+      <Field
+        name="compactnessMean"
+        component={renderField}
+        type="number"
+        label="Compactness Mean"
+      />
+      <br />
+      <Field
+        name="concavityMean"
+        component={renderField}
+        type="number"
+        label="Concavity Mean"
+      />
+      <br />
+      <Field
+        name="concavePointsMean"
+        component={renderField}
+        type="number"
+        label="Concave Points Mean"
+      />
+      <br />
+      <Field
+        name="symmetryMean"
+        component={renderField}
+        type="number"
+        label="Symmetry Mean"
+      />
+      <br />
+      <Field
+        name="fractalDimensionMean"
+        component={renderField}
+        type="number"
+        label="Fractal Dimension Mean"
+      />
       <br />
       <div>
-        <label htmlFor="textureMean">Texture Mean: </label>
-        <Field name="textureMean" component="input" type="number" />
+        <Button type="submit" color="primary">
+          Next
+        </Button>
       </div>
-      <br />
-      <div>
-        <label htmlFor="perimeterMean">Perimeter Mean: </label>
-        <Field name="perimeterMean" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="areaMean">Area Mean: </label>
-        <Field name="areaMean" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="smoothnessMean">Smoothness Mean: </label>
-        <Field name="smoothnessMean" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="compactnessMean">Compactness Mean: </label>
-        <Field name="compactnessMean" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="concavityMean">Concavity Mean: </label>
-        <Field name="concavityMean" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="concavePointsMean">Concave Points Mean: </label>
-        <Field name="concavePointsMean" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="symmetryMean">Symmetry Mean: </label>
-        <Field name="symmetryMean" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="fractalDimensionMean">Fractal Dimension Mean: </label>
-        <Field name="fractalDimensionMean" component="input" type="number" />
-      </div>
-      <br />
     </div>
   );
 };
 
-export default Means;
+export default reduxForm({
+  form: 'dataInput',
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
+})(Means);
