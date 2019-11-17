@@ -1,64 +1,106 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import renderField from './renderField';
+import Button from '@material-ui/core/Button';
 
-const Worsts = () => {
+const Worsts = props => {
+  const { handleSubmit, prevPage } = props;
   return (
     <div>
       <h3>
         Please provide the "worst" (mean of 3 largest values) for each field.
       </h3>
-      <div>
-        <label htmlFor="radiusWorst">Radius Worst: </label>
-        <Field name="radiusWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="textureWorst">Texture Worst: </label>
-        <Field name="textureWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="perimeterWorst">Perimeter Worst: </label>
-        <Field name="perimeterWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="areaWorst">Area Worst: </label>
-        <Field name="areaWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="smoothnessWorst">Smoothness Worst: </label>
-        <Field name="smoothnessWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="compactnessWorst">Compactness Worst: </label>
-        <Field name="compactnessWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="concavityWorst">Concavity Worst: </label>
-        <Field name="concavityWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="concavePointsWorst">Concave Points Worst: </label>
-        <Field name="concavePointsWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="symmetryWorst">Symmetry Worst: </label>
-        <Field name="symmetryWorst" component="input" type="number" />
-      </div>
-      <br />
-      <div>
-        <label htmlFor="fractalDimensionWorst">Fractal Dimension Worst: </label>
-        <Field name="fractalDimensionWorst" component="input" type="number" />
-      </div>
-      <br />
+      <form onSubmit={handleSubmit}>
+        <Field
+          name="radiusWorst"
+          component={renderField}
+          type="number"
+          label="Radius Worst: "
+        />
+        <br />
+        <Field
+          name="textureWorst"
+          component={renderField}
+          type="number"
+          label="Texture Worst: "
+        />
+        <br />
+        <Field
+          name="perimeterWorst"
+          component={renderField}
+          type="number"
+          label="Perimeter Worst: "
+        />
+        <br />
+        <Field
+          name="areaWorst"
+          component={renderField}
+          type="number"
+          label="Area Worst: "
+        />
+        <br />
+        <Field
+          name="smoothnessWorst"
+          component={renderField}
+          type="number"
+          label="Smoothness Worst: "
+        />
+        <br />
+        <Field
+          name="compactnessWorst"
+          component={renderField}
+          type="number"
+          label="Compactness Worst: "
+        />
+        <br />
+        <Field
+          name="concavityWorst"
+          component={renderField}
+          type="number"
+          label="Concavity WOrst: "
+        />
+        <br />
+        <Field
+          name="concavePointsWorst"
+          component={renderField}
+          type="number"
+          label="Concave Points Worst: "
+        />
+        <br />
+        <Field
+          name="symmetryWorst"
+          component={renderField}
+          type="number"
+          label="Symmetry Worst: "
+        />
+        <br />
+        <Field
+          name="fractalDimensionWorst"
+          component={renderField}
+          type="number"
+          label="Fractal Dimension Worst: "
+        />
+        <br />
+        <div>
+          <Button
+            type="button"
+            color="secondary"
+            variant="outlined"
+            onClick={prevPage}
+          >
+            Previous Page
+          </Button>
+          <Button type="submit" color="secondary" variant="outlined">
+            Submit Data
+          </Button>
+        </div>
+      </form>
     </div>
   );
 };
 
-export default Worsts;
+export default reduxForm({
+  form: 'dataInput',
+  destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
+})(Worsts);

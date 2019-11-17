@@ -82,11 +82,16 @@ const StandardErrors = props => {
         />
         <br />
         <div>
-          <Button type="button" color="secondary" onClick={prevPage}>
-            Previous
+          <Button
+            type="button"
+            color="secondary"
+            variant="outlined"
+            onClick={prevPage}
+          >
+            Previous Page
           </Button>
-          <Button type="submit" color="primary">
-            Next
+          <Button type="submit" color="secondary" variant="outlined">
+            Next Page
           </Button>
         </div>
       </form>
