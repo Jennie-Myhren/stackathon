@@ -19847,8 +19847,8 @@ function tallyAccuracy(net, testData) {
       hits += 1;
     }
   }); //make sure all the samples ran
+  // console.log(`Articial Brain ran ${testData.length} tests.`);
 
-  console.log("Articial Brain ran ".concat(testData.length, " tests."));
   var accuracy = Number.parseFloat(hits / testData.length).toPrecision(4);
   return "".concat(accuracy * 100, " %");
 }
@@ -19959,12 +19959,13 @@ var config = {
 }; //initialize simple feed-forward neural network
 
 var net = new NeuralNetwork(config); //log error + iterations post-training
+// console.log('Artificial brain done training!', net.train(cleanTrainData));
 
-console.log('Artificial brain done training!', net.train(cleanTrainData));
-var trainedBrain = net; //calculate accuracy after running net.run on test data
+net.train(cleanTrainData);
+var trainedBrain = net; //calculate and log accuracy after running net.run on test data
 
-var accuracy = tallyAccuracy(net, cleanTestData);
-console.log('TCL: accuracy', accuracy);
+var accuracy = tallyAccuracy(net, cleanTestData); // console.log('TCL: accuracy', accuracy);
+
 module.exports = {
   cleanTestData: cleanTestData,
   trainedBrain: trainedBrain,

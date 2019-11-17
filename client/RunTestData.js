@@ -1,40 +1,38 @@
-import React, { useState } from 'react';
-import { accuracy } from '../brain/neuralNet';
-import {
-  makeStyles,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  DialogTitle,
-  Dialog,
-  Typography,
-} from '@material-ui/core';
+import React from 'react';
+import { Typography } from '@material-ui/core';
 import TestDataTable from './TestDataTable';
-import Modal from './Modal';
+import StatsPopover from './StatsPopover';
+
+// const useStyles = makeStyles(theme => ({
+//   typography: {
+//     padding: theme.spacing(2),
+//   },
+// }));
 
 const RunTestData = () => {
-  const [open, setOpen] = useState(false);
+  // const [isClicked, setClicked] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // const [open, setOpen] = useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <div>
       <br />
       <Typography>Last Test Run (n=284)</Typography>
       <br />
-      <Button variant="outlined" color="secondary" onClick={handleOpen}>
+      <StatsPopover />
+      {/* <Button type="button" variant="outlined" color="secondary">
         View Accuracy Stats
-      </Button>
+      </Button> */}
       <br />
       <br />
-      <Modal />
       <TestDataTable />
     </div>
   );

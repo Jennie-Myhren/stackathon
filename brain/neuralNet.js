@@ -102,12 +102,13 @@ const config = {
 const net = new NeuralNetwork(config);
 
 //log error + iterations post-training
-console.log('Artificial brain done training!', net.train(cleanTrainData));
+// console.log('Artificial brain done training!', net.train(cleanTrainData));
+net.train(cleanTrainData);
 
 const trainedBrain = net;
 
-//calculate accuracy after running net.run on test data
+//calculate and log accuracy after running net.run on test data
 const accuracy = tallyAccuracy(net, cleanTestData);
-console.log('TCL: accuracy', accuracy);
+// console.log('TCL: accuracy', accuracy);
 
 module.exports = { cleanTestData, trainedBrain, accuracy };
