@@ -6,19 +6,6 @@ const data = require('./parseData');
 const minMaxByField = require('./minsAndMaxs'); //{field: {min, max}, ...}
 const tallyAccuracy = require('./tallyAccuracy');
 
-//NORMALIZING AND FORMATTING DATA
-//get raw data (array of strings)
-// const rawData = fs
-//   .readFileSync(path.resolve(__dirname, '/data/dataset.csv'), 'utf8')
-//   .split('\n');
-
-//extract headers to use as input/output labels
-// const headers = rawData[0]
-//   .split(',')
-//   .map(header => header.replace(/["']/g, ''));
-
-// let sampleSize = rawData.length; //(n = 569)
-
 //normalize and format dataset
 const allData = data.map(row => {
   for (let field in row) {
@@ -43,34 +30,6 @@ const allData = data.map(row => {
   }
   return row;
 });
-
-//Normalize and format data ([{input: {label: value}, {output: {label: value}}]
-// const mallData = rawData.slice(1, sampleSize).map(row => {
-//   return row.split(',').reduce((dataObj, dataVal, index) => {
-//     let header = headers[index];
-
-//     if (header === 'diagnosis') {
-//       //Diagnosis data normalized as 0 (benign[B]) or 1 (malignant[M])
-//       dataVal = dataVal === 'M' ? 1 : 0;
-//     } else if (header !== 'id') {
-//       //Other data normalized with |(value - min)| / range for # btwn 0 and 1
-//       if (minMaxByField.hasOwnProperty(header)) {
-//         let min = minMaxByField[header].min;
-//         let max = minMaxByField[header].max;
-//         let range = max - min;
-//         let distanceFromMin = Math.abs(dataVal - min);
-//         let normalizedToDecimal = Number.parseFloat(
-//           distanceFromMin / range
-//         ).toPrecision(4);
-//         dataVal = normalizedToDecimal;
-//       }
-//     }
-//     //set label for data point
-//     dataObj[header] = dataVal;
-//     return dataObj;
-//   }, {});
-// });
-// console.log('TCL: rawData', rawData);
 
 //separate train and test data
 let sampleSize = data.length; //(n=569)

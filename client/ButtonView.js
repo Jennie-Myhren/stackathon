@@ -6,12 +6,12 @@ import Typography from '@material-ui/core/Typography';
 export default function ButtonView() {
   const images = [
     {
-      url: 'http://placeimg.com/400/400/tech?t=1573929804145',
+      url: 'http://placeimg.com/400/400/tech?t=1573929820220',
       title: 'Run Test Data',
       width: '50%',
     },
     {
-      url: 'http://placeimg.com/400/400/tech?t=1573929820220',
+      url: 'https://placeimg.com/400/400/tech?t=1574044568669',
       title: 'Input New Patient Data',
       width: '50%',
     },

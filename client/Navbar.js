@@ -34,7 +34,7 @@ const Navbar = () => {
             className={classes.title}
             variant="h3"
           >
-            dAIgnose
+            oncoBot
           </Typography>
           <br />
           <Avatar
