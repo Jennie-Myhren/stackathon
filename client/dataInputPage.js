@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataInputForm from './DataInputForm';
-// import trainedBrain from '../brain/neuralNet';
+import { trainedBrain } from '../brain/neuralNet';
+import ResultPage from './ResultPage';
 
 const DataInputPage = () => {
-  const handleSubmit = (e, { values }) => {
-    // print the form values to the console
-    // trainedBrain.run(values);
-    console.log('Handled Submit');
+  const [dxPrediction, setDxPrediction] = useState('');
+
+  const result = data => {
+    let prediction = trainedBrain.run(data);
+    if (prediction.diagnosis === 1) {
+      setDxPrediction('Malignant');
+    } else {
+      setDxPrediction('Benign');
+    }
   };
-  return <DataInputForm handleSubmit={handleSubmit} />;
+
+  return (
+    <div>
+      {dxPrediction === '' ? (
+        <DataInputForm onSubmit={result} dxPrediction={dxPrediction} />
+      ) : (
+        <ResultPage dxPrediction={dxPrediction} />
+      )}
+    </div>
+  );
 };
 
 export default DataInputPage;
