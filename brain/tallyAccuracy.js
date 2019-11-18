@@ -12,8 +12,6 @@ function tallyAccuracy(net, testData) {
       hits += 1;
     }
   });
-  //make sure all the samples ran
-  // console.log(`Articial Brain ran ${testData.length} tests.`);
   let accuracy = Number.parseFloat(hits / testData.length).toPrecision(4);
   return `${accuracy * 100} %`;
 }

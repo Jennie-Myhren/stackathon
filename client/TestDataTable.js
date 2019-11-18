@@ -42,17 +42,6 @@ const columns = headers.map(header => {
   };
 });
 
-// const rows = data.map(row => {
-//   // let values = [];
-//   // for (let field in row) {
-//   //   if (field) {
-//   //     values.push(row[field]);
-//   //   }
-//   // }
-//   return row;
-// });
-// console.log('TCL: rows length', rows.length);
-
 const useStyles = makeStyles({
   root: {
     width: '100%',

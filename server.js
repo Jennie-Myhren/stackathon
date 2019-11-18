@@ -13,9 +13,6 @@ const createApp = () => {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // api routes
-  // app.use('/api', require('./api'));
-
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, 'public')));
 
@@ -51,8 +48,6 @@ const startListening = () => {
     console.log(`Making predictions on ${PORT}`)
   );
 };
-
-// const syncDb = () => db.sync();
 
 async function bootApp() {
   await createApp();
