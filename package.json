@@ -25,7 +25,7 @@
     "brain.js": "^2.0.0-alpha.9",
     "convert-csv-to-json": "0.0.15",
     "istanbul-lib-coverage": "^2.0.5",
-    "papaparse": "^5.1.0",
+    "papaparse": "^5.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
