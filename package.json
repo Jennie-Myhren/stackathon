@@ -41,6 +41,6 @@
     "babel-loader": "7.1.5",
     "parcel-bundler": "^1.12.4",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.12"
   }
 }
